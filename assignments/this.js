@@ -22,15 +22,49 @@ When using the 'new' keyword, you construct a new, empty object and JS saves it 
 // Principle 1
 
 // code example for Window Binding
+function example(param){
+  console.log(this);
+  return param;
+}
+example('test');
 
 // Principle 2
 
 // code example for Implicit Binding
+let myExample = {
+  name: 'Ryan',
+  age: 30,
+  method: function(){
+    console.log(this.method);
+  }
+}
+
+myExample.method();
 
 // Principle 3
 
 // code example for New Binding
+function food(favorite){
+    this.thing = favorite;
+  }
+  let myFavoriteFood = new food(`My favortie food is ${'Ramen'}`);
+  
+  console.log(myFavoriteFood.thing);
 
 // Principle 4
 
 // code example for Explicit Binding
+function personAge(){
+    console.log(`${this.name} is this old, ${this.age}`);
+  }
+  
+  let myPerson = {
+    name: 'Ryan',
+    age: 30,
+   
+  }
+  
+  personAge.call(myPerson);
+  
+  newPersonAge = personAge.bind(myPerson);
+  newPersonAge();
